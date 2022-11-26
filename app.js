@@ -76,6 +76,10 @@ async function createDocument(date) {
   return tList;
 }
 
+// port number
+let port = (process.env.PORT == null || process.env.PORT) ? 3000 : process.env.PORT
+
+
 // Initiate server
 app.listen(3000, function () {
   console.log("Server initiated at port number 3000...");
