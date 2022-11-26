@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ToDo List</title>
+  <script src="https://kit.fontawesome.com/fcb0b47d39.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <form action="/" method="post" id="calender">
+      <select name="month" id="month" class="calSelect month" onchange="$('#calSubmit').click()">
+        <% for (let sMonth of cDate.suggestions.fullMonths) {%>
+        <option value="<%= sMonth %>" <% if (sMonth===cDate.date_format.month){%> <%= "selected" %> <% } %>>
+          <%= sMonth %>
+        </option>
+        <% } %>
+      </select>
+      <select name="day" id="day" class="calSelect day" onchange="$('#calSubmit').click()">
+        <% for (let sDay of cDate.suggestions.fullDays) {%>
+        <option value="<%= sDay %>" <% if (sDay===cDate.date_format.day){%> <%= "selected" %> <% } %>>
+          <%= sDay %>
+        </option>
+        <% } %>
+      </select>
+      <select name="year" id="year" class="calSelect year" onchange="$('#calSubmit').click()">
+        <% for (let sYear of cDate.suggestions.fullYears) {%>
+        <option value="<%= sYear %>" <% if (sYear===cDate.date_format.year){%> <%= "selected" %> <% } %>>
+          <%= sYear %>
+        </option>
+        <% } %>
+      </select>
+      <button type="submit" id="calSubmit" style="display:none"></button>
+    </form>
+    <br>
+    <form action="/" method="post" class="tasks" id="tasks">
+      <% for (let doneTask of tasks.Done) { %>
+      <div class="task">
+        <input type="checkbox" name="<%=doneTask%>" value="<%=doneTask%>" id="<%=doneTask%>" class="taskmarker" onclick="$('#taskSubmit').click()" checked />
+        <i class="fa-solid fa-circle-check round-check"></i>
+        <label for="<%= doneTask %> "><s>
+            <%= doneTask %>
+          </s></label>
+        <button id='delete' value="delete" onclick="deleteTask('Done','<%= doneTask %>',event)">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+      <% } %>
+
+      <% for (let notDoneTask of tasks.notDone) { %>
+      <div class="task">
+        <input type="checkbox" name="<%=notDoneTask%>" value="<%=notDoneTask%>" id="<%=notDoneTask%>" class="taskmarker" onclick="$('#taskSubmit').click()">
+        <i class="fa-solid fa-circle-check round-check"></i>
+        <label for="<%= notDoneTask %> ">
+          <%= notDoneTask %>
+        </label>
+        <button id='delete' value="delete" onclick="deleteTask('notDone','<%= notDoneTask %>',event)">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+      <% } %>
+      <button type="submit" id="taskSubmit" style="display:none"></button>
+    </form>
+
+    <form action="/" method="post" id="addTaskForm">
+      <input type="text" name="newTask" id="newTask" placeholder="New Task" autocomplete="off" required>
+      <button type="submit" id="addSubmit">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </form>
+  </div>
+</body>
+
+</html>

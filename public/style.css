@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+html {
+  font-family: "Helvetica", "Monotype corsiva";
+  font-size: 2rem;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(0deg, #37185b 10%, #131d38 50% );
+}
+
+button, .taskmarker {
+  cursor: pointer;
+  outline: none;
+}
+
+.container {
+  margin: 0em;
+  min-width: max-content;
+  max-width: 60%;
+  font-size: 1em;
+}
+
+#calender {
+  width: 100%;
+  background-color: #ffffff24;
+  text-align: center;
+  padding: 1em 1.3em;
+  border-radius: .5em;
+  display:flex;
+  justify-content: center;
+  gap: 1em;
+  box-shadow: 
+  .1em .1em .2em #ffffff24,
+  .2em .2em .2em #ffffff24;
+}
+
+#calender .calSelect {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: .3em;
+  font-size: 1.2em;
+  color: white;
+  text-align: center;
+  padding: .3em .4em;
+  outline: none;
+  
+}
+
+#calender .calSelect option {
+  font-size: .7em;
+  background-color: #131d38;
+  text-align: center;
+  gap: 1em;
+}
+
+#tasks {
+  border-radius: .5em .5em 0em 0em;
+  background-color: #ffffff24;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* gap: .5em; */
+  padding: .25em;
+}
+
+#tasks .task {
+  position: relative;
+  background-color: #ffffff24;
+  color: white;
+  border-radius: .5em;
+  padding: .5em;
+  margin: .25em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .5em;
+  word-wrap: break-word;
+}
+
+#tasks .task .taskmarker {
+  appearance: none;
+  height: .7em;
+  width:.7em;
+  margin:.05em;
+  background-color: rgba(0, 255, 255, 0);
+  border: .1em solid white;
+  border-radius: 50%;
+  
+}
+
+#tasks .task .taskmarker:checked, #tasks .task .taskmarker:not(:checked):hover {
+  background-color: white;
+  transition-duration: 50ms;
+}
+
+#tasks .task .round-check {
+  position:absolute;
+  left:.7em;
+  font-size: .75em;
+  color: green;
+  transform: scale(0);
+  pointer-events: none;
+  transition-property: transform; 
+  transition-duration: 50ms;
+}
+
+#tasks .task .taskmarker:checked ~ .round-check{
+  transform: scale(1);
+  transition: transform 50ms;
+}
+
+#tasks .task .taskmarker:checked:hover ~ .round-check {
+  opacity: 0.7;
+  z-index: -1;
+}
+
+#tasks .task .taskmarker:checked:hover {
+  background-color: transparent;
+}
+
+#tasks .task .taskmarker:not(:checked):hover ~ .round-check{
+  transform: scale(1);
+  opacity: .8;
+}
+
+#tasks .task #delete {
+  padding: .4em .7em;
+  border:none;
+  border-radius: .5em;
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  font-size: .7em;
+
+  position: absolute;
+  right: .5em;
+}
+
+#tasks .task #delete:hover {
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 .3em red;
+}
+
+#addTaskForm {
+  width: 100%;
+  background-color: #ffffff24;
+  padding:.5em;
+  padding-top: 0;
+  display:flex;
+  gap:.5em;
+  border-radius: 0em 0em .5em .5em;
+}
+
+#newTask {
+  width:85%;
+  padding:.5em;
+  border-radius: .5em;
+  border: none;
+  background-color: #ffffff24;
+  color: white;
+  outline:none;
+}
+
+#newTask:focus{
+  box-shadow: 
+  .05em .05em .2em #ffffff24,
+  .1em .1em .2em #ffffff24;
+}
+
+#newTask::placeholder{
+  color:rgba(255, 255, 255, 0.6);
+}
+
+#addTaskForm #addSubmit{
+  width: 15%;
+  border:none;
+  border-radius: .5em;
+  outline:none;
+  background-color: hsl(285,150%, 50%);
+  color:white;
+}
+
+#addTaskForm #addSubmit:hover {
+  background-color: hsl(290,150%, 50%);
+  box-shadow: 0 0 .2em hsl(285,150%, 50%);
+}
