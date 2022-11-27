@@ -81,8 +81,8 @@ let port = (process.env.PORT == null || process.env.PORT) ? 3000 : process.env.P
 
 
 // Initiate server
-app.listen(3000, function () {
-  console.log("Server initiated at port number 3000...");
+app.listen(port, function () {
+  console.log(`Server initiated at port number ${port}...`);
 });
 
 // Declare home page (root)
