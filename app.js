@@ -77,8 +77,7 @@ async function createDocument(date) {
 }
 
 // port number
-let port = (process.env.PORT == null || process.env.PORT) ? 3000 : process.env.PORT
-
+let port = process.env.PORT || 3000 
 
 // Initiate server
 app.listen(port, function () {
