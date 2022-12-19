@@ -2,7 +2,6 @@
 
 // importing required modules
 const express = require("express");
-const bodyParser = require("body-parser");
 const moment = require("moment");
 const mongoose = require("mongoose");
 // const mongodb = require('./connectMongo')
@@ -10,7 +9,7 @@ const mongoose = require("mongoose");
 // call express
 const app = express();
 // use bodyParser
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 // creating public folder
 app.use(express.static("public"));
 // set ejs
