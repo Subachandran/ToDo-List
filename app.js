@@ -4,7 +4,6 @@
 const express = require("express");
 const moment = require("moment");
 const mongoose = require("mongoose");
-// const mongodb = require('./connectMongo')
 
 // call express
 const app = express();
@@ -41,7 +40,6 @@ function dateFormat(cDate) {
 
 // Mongo DB
 // connect mongodb
-// let uri = "mongodb://localhost:27017/todo-list";
 let uri = "mongodb+srv://JKSdb:JKS-mongo-shell-2001...@jks.tqqp75s.mongodb.net/todo-list";
 mongoose.connect(
   uri,
