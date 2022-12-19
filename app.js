@@ -1,10 +1,10 @@
 // To do list server
 
 // importing required modules
+require("dotenv").config();
 const express = require("express");
 const moment = require("moment");
 const mongoose = require("mongoose");
-const 
 
 // call express
 const app = express();
