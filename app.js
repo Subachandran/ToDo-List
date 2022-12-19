@@ -43,7 +43,7 @@ function dateFormat(cDate) {
 let uri = "mongodb+srv://JKSdb:JKS-mongo-shell-2001...@jks.tqqp75s.mongodb.net/todo-list";
 mongoose.connect(
   uri,
-  () => console.log("Connected succesfully"),
+  () => console.log("Connected DB succesfully"),
   (e) => console.error(e)
 );
 
@@ -85,7 +85,6 @@ app.listen(port, function () {
 app.get("/", async function (req, res) {
   CurrentDate = new Date();
   CurrentDateString = CurrentDate.toLocaleDateString("en-US", dateOptions);
-  console.log(CurrentDateString);
   try {
     let tasksList = await showCollections({ Date: CurrentDateString });
     tasksList = !tasksList ? await createDocument(CurrentDate) : tasksList;
